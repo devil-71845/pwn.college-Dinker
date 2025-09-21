@@ -1,0 +1,19 @@
+# Challenge programs
+The actual files comprising the challenge live in the /challenge directory. Unlike previous challenges, 
+which automatically ran when the terminal was opened, this challenge requires you to invoke the /challenge/solve program directly! 
+Just by running it in a terminal, you will get the flag!
+
+## My solve
+flag:pwn.college{wvEw-AFcnFPSFnpygohpQUVFqqj.QX0MDO0wiM2gjNzEzW}
+
+type in your solve and your thought process behind solving the challenge. Include as much as info as possible.. Use triple ticks for bash.
+```bash
+example triple ticks for bash
+pwn.college{helloworld}
+```
+
+## What I learned
+  To access the file from the directory using dojo for the first time
+
+## References 
+I refered a video about Getting started in Interacting with DOJO from pwn.college.
