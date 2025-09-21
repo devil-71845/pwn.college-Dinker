@@ -6,7 +6,7 @@ You might try to just read the /flag file on your own. Unfortunately for you, yo
 Like many of the other challenges on the platform, this challenge's /challenge/solve program will not read the flag file directly. However, it will make the flag world-readable when you run it! After that, you will need to read /flag yourself (e.g., using cat /flag or a text editor), and submit its contents as the solution.
 
 ## My solve
-flag - pwn.college{MkJElP8IKGgiETq5JXAdFknx1wI.QX5IzNzwiM2gjNzEzW}
+*flag*--flag - pwn.college{MkJElP8IKGgiETq5JXAdFknx1wI.QX5IzNzwiM2gjNzEzW}
 
 type in your solve and your thought process behind solving the challenge. Include as much as info as possible.. Use triple ticks for bash.
 hacker@welcome~the-flag-file:~$ ls -al
@@ -59,4 +59,4 @@ Same as first challenge but for this challenge we have to access through root.
 explain what you learned
 
 ## References 
-I Just refered fust challenge and modified some changes
+I Just refered first challenge and modified some changes
