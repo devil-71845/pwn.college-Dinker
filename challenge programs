@@ -4,7 +4,7 @@ which automatically ran when the terminal was opened, this challenge requires yo
 Just by running it in a terminal, you will get the flag!
 
 ## My solve
-flag:pwn.college{wvEw-AFcnFPSFnpygohpQUVFqqj.QX0MDO0wiM2gjNzEzW}
+*flag* flag:pwn.college{wvEw-AFcnFPSFnpygohpQUVFqqj.QX0MDO0wiM2gjNzEzW}
 
 type in your solve and your thought process behind solving the challenge. Include as much as info as possible.. Use triple ticks for bash.
 ```bash
