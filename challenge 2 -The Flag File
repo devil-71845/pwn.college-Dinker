@@ -1,0 +1,62 @@
+# Challenge Name - The Flag File
+So far, the challenges have been giving you flags directly. In this challenge, you will learn that the flag actually lives in the /flag file. Your real goal, in any challenge, is to get the contents of this file through any means necessary, even if the challenge program does not do it on purpose.
+
+You might try to just read the /flag file on your own. Unfortunately for you, you are executing as the hacker user and /flag is only readable by the root user, so you cannot access it. In the previous challenges, the challenge program itself (e.g., /challenge/solve), which runs as the root user (and, thus, can read the flag), read this file and printed its contents, but this level is harder.
+
+Like many of the other challenges on the platform, this challenge's /challenge/solve program will not read the flag file directly. However, it will make the flag world-readable when you run it! After that, you will need to read /flag yourself (e.g., using cat /flag or a text editor), and submit its contents as the solution.
+
+## My solve
+flag - pwn.college{MkJElP8IKGgiETq5JXAdFknx1wI.QX5IzNzwiM2gjNzEzW}
+
+type in your solve and your thought process behind solving the challenge. Include as much as info as possible.. Use triple ticks for bash.
+hacker@welcome~the-flag-file:~$ ls -al
+total 8
+drwxr-xr-x 1 hacker hacker   64 Sep 21 11:49 .
+drwxr-xr-x 1 root   root   4096 Sep 21 11:56 ..
+-rw------- 1 hacker hacker  199 Sep 21 11:48 .bash_history
+drwxr-xr-x 1 hacker hacker   18 Sep 21 11:49 .cache
+drwxr-xr-x 1 hacker hacker    0 Sep 21 11:44 .config
+drwxr-xr-x 1 hacker hacker   10 Sep 21 11:49 .local
+hacker@welcome~the-flag-file:~$ ls -al /challenge
+total 16
+drwxr-xr-x 2 root root 4096 Sep 21 11:56 .
+drwxr-xr-x 1 root root 4096 Sep 21 11:56 ..
+-rwsr-xr-x 1 root root 1041 Jan 18  2025 DESCRIPTION.md
+-rwsr-xr-x 1 root root 1163 Jan 18  2025 solve
+hacker@welcome~the-flag-file:~$ /challenge /The Flag File
+bash: /challenge: Is a directory
+hacker@welcome~the-flag-file:~$ cat /flag
+cat: /flag: Permission denied
+hacker@welcome~the-flag-file:~$ /challenge/solve
+⠀⢀⣶⣿⣿⣷⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠘⣿⣿⣿⣿⠇⠀⠀⠀⠀⠀⠀⢀⣤⡀⠀⠀⠀⠀⠀⠀
+⠀⠀⠈⠙⠋⢁⣀⣠⣤⣀⣀⣀⣰⣿⠟⠁⠀⠀⠀⠀⠀⠀
+⠀⠀⣀⣴⣾⣿⣿⣿⣿⣿⠿⠿⠿⠋⠀⠀⠀⠀⣀⣤⣶⡆
+⢠⣾⣿⣿⢿⣿⣿⣿⣿⣧⠀⠀⠀⣀⣤⣴⣾⣿⡿⠟⠋⠀
+⠘⣿⣇⠀⠈⢻⣿⣿⣿⣿⣷⣶⣿⣿⣿⡿⠛⠉⠀⠀⠀⠀
+⠀⢻⣿⡆⠀⠀⣿⣿⣿⣿⣿⣿⠿⠋⠁⠀⠀⠀⠀⠀⠀⠀
+⠀⠈⠛⠁⠀⠀⢹⣿⣿⡟⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⢸⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠘⣿⣿⡇⠀WELCOME⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⣿⣿⡇⠀TO⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⣿⣿⡇⠀THE⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⢿⣿⠁⠀DOJO⠀⠀⠀⠀⠀⠀⠀
+
+Making the flag world readable (chmod 644 /flag).
+..........DONE! Go read /flag (e.g., using cat)!
+hacker@welcome~the-flag-file:~$ cat flag
+cat: flag: No such file or directory
+hacker@welcome~the-flag-file:~$ cat /flag
+pwn.college{MkJElP8IKGgiETq5JXAdFknx1wI.QX5IzNzwiM2gjNzEzW}
+hacker@welcome~the-flag-file:~$
+```bash
+example triple ticks for bash
+pwn.college{helloworld}
+```
+
+## What I learned
+Same as first challenge but for this challenge we have to access through root.
+explain what you learned
+
+## References 
+I Just refered fust challenge and modified some changes
