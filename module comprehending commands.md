@@ -467,6 +467,109 @@ The problem required me to run the command 'touch' and 'mkdir', which creates a 
 The problem statement was the reference used.
 ```
 Create a /tmp/pwn directory and make a college file in it! Then run /challenge/run, which will check your solution and give you the flag!```
+# 13. finding files  
+The challenge prompted to use the `find` command to find the `flag` file in the entire filesystem.  
+  
+## My Solve  
+**Flag:** `pwn.college{0-oToRIHhvgtGaoNp0mwRoo0cpX.QXyMDO0wiM2gjNzEzW}`  
+  
+1. I first used `find / -name 'flag` command and located a lot of files with the name `flag`  
+```hacker@commands~finding-files:~$ find / -name 'flag'
+find: ‘/root’: Permission denied
+find: ‘/proc/1/task/1/fd’: Permission denied
+find: ‘/proc/1/task/1/fdinfo’: Permission denied
+find: ‘/proc/1/task/1/ns’: Permission denied
+find: ‘/proc/1/fd’: Permission denied
+find: ‘/proc/1/map_files’: Permission denied
+find: ‘/proc/1/fdinfo’: Permission denied
+find: ‘/proc/1/ns’: Permission denied
+find: ‘/proc/7/task/7/fd’: Permission denied
+find: ‘/proc/7/task/7/fdinfo’: Permission denied
+find: ‘/proc/7/task/7/ns’: Permission denied
+find: ‘/proc/7/fd’: Permission denied
+find: ‘/proc/7/map_files’: Permission denied
+find: ‘/proc/7/fdinfo’: Permission denied
+find: ‘/proc/7/ns’: Permission denied
+find: ‘/var/log/private’: Permission denied
+find: ‘/var/log/apache2’: Permission denied
+find: ‘/var/log/mysql’: Permission denied
+find: ‘/var/cache/ldconfig’: Permission denied
+find: ‘/var/cache/apt/archives/partial’: Permission denied
+find: ‘/var/cache/private’: Permission denied
+find: ‘/var/lib/apt/lists/partial’: Permission denied
+find: ‘/var/lib/php/sessions’: Permission denied
+find: ‘/var/lib/mysql-files’: Permission denied
+find: ‘/var/lib/private’: Permission denied
+find: ‘/var/lib/mysql-keyring’: Permission denied
+find: ‘/var/lib/mysql’: Permission denied
+find: ‘/tmp/tmp.4mK6TfTSUV’: Permission denied
+find: ‘/run/mysqld’: Permission denied
+find: ‘/run/sudo’: Permission denied
+find: ‘/etc/ssl/private’: Permission denied
+/usr/local/lib/python3.8/dist-packages/pwnlib/flag
+/usr/lib/python3/dist-packages/sympy/core/tests/flag
+/opt/pwndbg/.venv/lib/python3.8/site-packages/pwnlib/flag
+/nix/store/7ns27apnvn4qj4q5c82x0z1lzixrz47p-radare2-5.9.8/share/radare2/5.9.8/flag
+/nix/store/5z3sjp9r463i3siif58hq5wj5jmy5m98-python3.12-pwntools-4.13.1/lib/python3.12/site-packages/pwnlib/flag
+/nix/store/5n5lp1m8gilgrsriv1f2z0jdjk50ypcn-rizin-0.7.3/share/rizin/flag
+/nix/store/bnlabj2vsbljhp597ir29l51nrqhm89w-rizin-0.7.4/share/rizin/flag
+/nix/store/s8b49lb0pqwvw0c6kgjbxdwxcv2bp0x4-radare2-5.9.8/share/radare2/5.9.8/flag
+/nix/store/1hyxipvwpdpcxw90l5pq1nvd6s6jdi5m-python3.12-pwntools-4.14.1/lib/python3.12/site-packages/pwnlib/flag
+/nix/store/h88mxp2mbgyj06vypwmqpy05idhwimnp-python3.13-pwntools-4.14.1/lib/python3.13/site-packages/pwnlib/flag
+/nix/store/5qz6hgb1qzpvjrsw20wyiylx5zw8b9bk-pwntools-4.14.0/lib/python3.13/site-packages/pwnlib/flag
+```  
+2. Then ignoring the files where it showed `Permission denied`, I tried using cat on all the files one by one. The first location turned out to be a `directory`. But the second file turned out to be the actual `flag` file.  
+```  
+hacker@commands~finding-files:~$ cat /usr/local/lib/python3.8/dist-packages/pwnlib/flag
+cat: /usr/local/lib/python3.8/dist-packages/pwnlib/flag: Is a directory
+hacker@commands~finding-files:~$ cat /usr/lib/python3/dist-packages/sympy/core/tests/flag
+pwn.college{0-oToRIHhvgtGaoNp0mwRoo0cpX.QXyMDO0wiM2gjNzEzW}hacker@commands~finding-files:~$
+
+```  
+  
+## What I Learned  
+I learnt the usage of `find` command and its syntax.  
+  
+## References  
+The problem statement was the reference used.  
+`Now it's your turn. I've hidden the flag in a random directory on the filesystem. It's still called flag. Go find it! Several notes. First, there are other files named flag on the filesystem. Don't panic if the first one you try doesn't have the actual flag in it. Second, there're plenty of places in the filesystem that are not accessible to a normal user. These will cause find to generate errors, but you can ignore those; we won't hide the flag there! Finally, find can take a while; be patient!`
+
+# 14. linking files  
+The challenge prompted to link two files, to read out the flag by executing the `catflag` binary.  
+## My Solve  
+**Flag:** `pwn.college{40P8fxUo_ZE_JNewRRSYTec4vJB.QX5ETN1wiM2gjNzEzW}`  
+  
+I created a link from the file `/flag` to `~/not-the-flag` as the `/challenge/catflag` reads the file `not-the-flag`, through this I tricked the binary to read me the actual flag at `/flag`.  
+```  
+hacker@commands~linking-files:~$ ln -s /flag ~/not-the-flag
+hacker@commands~linking-files:~$ /challenge/catflag
+About to read out the /home/hacker/not-the-flag file!
+pwn.college{40P8fxUo_ZE_JNewRRSYTec4vJB.QX5ETN1wiM2gjNzEzW}
+hacker@commands~linking-files:~$
+  
+```  
+  
+## What I Learned  
+I learnt the meaning and usage of links, how a hard and a symbolic link is defined and what is the difference between the both.  
+The syntax of creating a symbolic link is `ln -s original_file_fath link_path` .  
+  
+## References  
+The problem statement was the reference used.  
+```  
+A symlink can be identified as such with a few methods. For example, the file command, which takes a filename and tells you what type of file it is, will recognize symlinks:  
+  
+hacker@dojo:~$ file /tmp/myfile  
+/tmp/myfile: ASCII text  
+hacker@dojo:~$ file ~/ourfile  
+/home/hacker/ourfile: symbolic link to /tmp/myfile  
+hacker@dojo:~$  
+  
+Okay, now you try it! In this level the flag is, as always, in /flag, but /challenge/catflag will instead read out /home/hacker/not-the-flag. Use the symlink, and fool it into giving you the flag!  
+```
+
+
+
+
 
 
 
